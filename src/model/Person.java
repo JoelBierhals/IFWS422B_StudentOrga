@@ -3,14 +3,11 @@ package model;
 import java.util.Scanner;
 
 public class Person {
-    private String firstName;
-    private String lastName;
+    private String firstName, lastName;
     private int birth;
     private static Scanner sc = new Scanner(System.in);
 
-    public Person() {
-
-    }
+    public Person() {}
 
     public Person(String firstname) {
         this.firstName = firstname;
