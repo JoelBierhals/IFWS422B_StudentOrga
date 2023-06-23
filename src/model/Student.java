@@ -8,14 +8,16 @@ package model;
 public class Student {
     private String name;
     private int id;
+    private static int anzahl = 0;
 
     // Standardkonstruktor
     public Student() {
-
+        anzahl++;
     }
 
     // Konstruktor
     public Student(String name) {
+        this();
         this.name = name;
     }
 
@@ -23,6 +25,14 @@ public class Student {
     public Student(String name, int id) {
         this(name); // anderen Konstruktor aufrufen
         this.id = id;
+    }
+
+     public static int getAnzahl() {
+        return anzahl;
+    }
+
+    public static void setAnzahl(int anzahl) {
+        Student.anzahl = anzahl;
     }
 
     public int getId() {
@@ -64,4 +74,6 @@ public class Student {
         System.out.println("Name: " + student1.name + " Id: " + student1.id);
         System.out.println(student2.info());
     }
+
+   
 }
