@@ -6,6 +6,8 @@ public class Person {
     private String firstName;
     private String lastName;
     private  int  birth;
+    private Scanner sc = new Scanner(System.in);
+
 
     public Person() {
 
@@ -46,7 +48,6 @@ public class Person {
     }
 
     public void newInputDialogue() {
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("Firstname: ");
         String firstname = sc.nextLine();
