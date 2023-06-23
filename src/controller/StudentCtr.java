@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.Scanner;
 import model.Student;
 
 /**
@@ -12,8 +11,8 @@ import model.Student;
 public class StudentCtr {
 
     public static void main(String[] args) throws Exception {
-        Student student1 = new Student("Nathan Evans", 1001);
-        Student student2 = new Student("Miksu Macloud", 1002);
+        Student student1 = new Student("Nathan Evans");
+        Student student2 = new Student("Miksu Macloud", 9999);
 
         System.out.println(student1.getName() + "\t" + student1.getId());
         System.out.println(student2.info());
@@ -36,10 +35,10 @@ public class StudentCtr {
         // System.out.println(student3.getName() + "\t" + student3.getId());
 
         // Konstruktor
-        Student student4 = new Student("Friday", 1003);
+        Student student4 = new Student("Friday");
         System.out.println(student4.getName() + "\t\t" + student4.getId());
 
-        System.out.println("Es wurden " + Student.getAnzahl() + "Studenten angelegt.");
+        System.out.println("Es wurden " + Student.getAnzahl() + " Studenten angelegt.");
     }
 
 }

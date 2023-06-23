@@ -9,9 +9,28 @@ public class Student {
     private String name;
     private int id;
     private static int anzahl = 0;
+    private static final int FIRST_ID = 1001;
+    private static final int LAST_ID = 9999;
+    private static int nextId = FIRST_ID;
+
+    public static int getNextId() {
+        return nextId;
+    }
+
+    public static void setNextId(int nextId) {
+        Student.nextId = nextId;
+    }
 
     // Standardkonstruktor
     public Student() {
+        if(nextId > LAST_ID) {
+            this.id = 0;
+            System.out.println("Alle verfügbaren Ids wurden verwendet.");
+        } else {
+            this.id = nextId;
+            nextId++;
+        }
+
         anzahl++;
     }
 
@@ -21,10 +40,11 @@ public class Student {
         this.name = name;
     }
 
-    // Konstruktor überladen
     public Student(String name, int id) {
-        this(name); // anderen Konstruktor aufrufen
+        this.name = name;
         this.id = id;
+        nextId = id+1;
+        anzahl++;
     }
 
      public static int getAnzahl() {
