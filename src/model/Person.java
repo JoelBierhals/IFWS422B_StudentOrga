@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class Person {
     private String firstName;
     private String lastName;
-    private  int  birth;
-    private Scanner sc = new Scanner(System.in);
-
+    private int birth;
+    private static Scanner sc = new Scanner(System.in);
 
     public Person() {
 
@@ -22,7 +21,7 @@ public class Person {
         this.lastName = lastname;
     }
 
-     public Person(String firstname, String lastname, int birth) {
+    public Person(String firstname, String lastname, int birth) {
         this.firstName = firstname;
         this.lastName = lastname;
         this.birth = birth;
@@ -31,18 +30,23 @@ public class Person {
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public int getBirth() {
         return birth;
     }
+
     public void setBirth(int birth) {
         this.birth = birth;
     }
@@ -58,13 +62,12 @@ public class Person {
         setLastName(lastname);
 
         System.out.println("Birth: ");
-        int birth= sc.nextInt();
+        int birth = sc.nextInt();
         setBirth(birth);
     }
 
     public static void newInputDialogue(Person person) {
-        Scanner sc = new Scanner(System.in);
-         System.out.println("Firstname: ");
+        System.out.println("Firstname: ");
         String firstname = sc.nextLine();
         person.setFirstName(firstname);
 
@@ -73,7 +76,7 @@ public class Person {
         person.setLastName(lastname);
 
         System.out.println("Birth: ");
-        int birth= sc.nextInt();
+        int birth = sc.nextInt();
         person.setBirth(birth);
     }
 
@@ -83,7 +86,7 @@ public class Person {
     }
 
     public static void main(String[] args) throws Exception {
-        
+
     }
-    
+
 }
