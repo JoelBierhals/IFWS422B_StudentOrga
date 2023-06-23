@@ -60,7 +60,21 @@ public class Person {
         System.out.println("Birth: ");
         int birth= sc.nextInt();
         setBirth(birth);
+    }
 
+    public static void newInputDialogue(Person person) {
+        Scanner sc = new Scanner(System.in);
+         System.out.println("Firstname: ");
+        String firstname = sc.nextLine();
+        person.setFirstName(firstname);
+
+        System.out.println("Lastname: ");
+        String lastname = sc.nextLine();
+        person.setLastName(lastname);
+
+        System.out.println("Birth: ");
+        int birth= sc.nextInt();
+        person.setBirth(birth);
     }
 
     public String info() {

@@ -13,5 +13,10 @@ public class PersonCtr {
         System.out.println(person2.info());
         person2.newInputDialogue();
         System.out.println(person2.info());
+        
+        Person.newInputDialogue(person2);
+        System.out.println(person2.info());
+
+        
     }
 }
