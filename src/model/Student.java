@@ -7,6 +7,7 @@ package model;
  */
 public class Student extends Person {
     private int id;
+    private String subject;
     private static int anzahl = 0;
     private static final int FIRST_ID = 1001;
     private static final int LAST_ID = 9999;
@@ -18,6 +19,14 @@ public class Student extends Person {
 
     public static void setNextId(int nextId) {
         Student.nextId = nextId;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     // Standardkonstruktor
@@ -67,9 +76,25 @@ public class Student extends Person {
         this.id = id;
     }
 
-
+    @Override
     public String info() {
         return super.info() + " Id: " + id;
+    }
+
+    @Override
+    public void newInputDialogue() {
+       super.newInputDialogue();
+
+        System.out.println("Subject: ");
+        subject = sc.nextLine();
+        setSubject(subject);
+    }
+
+    public static void newInputDialogue(Student student) {
+        Student.newInputDialogue(student);
+
+        System.out.println("Subject: ");
+        student.subject = sc.nextLine();
     }
 
     public static void main(String[] args) throws Exception {
