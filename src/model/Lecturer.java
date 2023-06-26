@@ -1,10 +1,11 @@
 package model;
 
-// Lecturere im Project StudentOrg
-//  @autor Joel Bierhals
+/**
+*  Lecturere im Project StudentOrg
+*  @autor Joel Bierhals
+*/ 
 
 public class Lecturer extends Person {
-
     public Lecturer() {
     }
 

@@ -40,6 +40,15 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
+    public void setName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public int getBirth() {
         return birth;
     }
@@ -61,6 +70,8 @@ public class Person {
         System.out.println("Birth: ");
         int birth = sc.nextInt();
         setBirth(birth);
+
+        sc.nextLine();
     }
 
     public static void newInputDialogue(Person person) {

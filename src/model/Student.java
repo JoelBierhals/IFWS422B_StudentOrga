@@ -5,8 +5,7 @@ package model;
  * 
  * @author Iris Hanheide
  */
-public class Student {
-    private String name;
+public class Student extends Person {
     private int id;
     private static int anzahl = 0;
     private static final int FIRST_ID = 1001;
@@ -24,10 +23,10 @@ public class Student {
     // Standardkonstruktor
     public Student() {
         if(nextId > LAST_ID) {
-            this.id = 0;
+            id = 0;
             System.out.println("Alle verfügbaren Ids wurden verwendet.");
         } else {
-            this.id = nextId;
+            id = nextId;
             nextId++;
         }
 
@@ -35,13 +34,18 @@ public class Student {
     }
 
     // Konstruktor
-    public Student(String name) {
+    public Student(String firstName, String lastName) {
         this();
-        this.name = name;
+        super.setName(firstName, lastName);
     }
 
-    public Student(String name, int id) {
-        this.name = name;
+    public Student(String firstName, String lastName, int birth) {
+        this(firstName, lastName);
+        super.setBirth(birth);
+    }
+
+    public Student(String firstName, String lastName, int birth, int id) {
+        this(firstName, lastName, birth);
         this.id = id;
         nextId = id+1;
         anzahl++;
@@ -63,35 +67,21 @@ public class Student {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setName(String firstName, String lastName) {
-        this.name = firstName + " " + lastName;
-    }
 
     public String info() {
-        return "Name: " + name + " Id: " + id;
+        return super.info() + " Id: " + id;
     }
 
     public static void main(String[] args) throws Exception {
-        // wir befinden uns in derselben Datei, deshalb kann für
-        // den Zugriff auf Attribute die "Punktnotation" verwendet werden,
-        // obwohl die Attribute den Modifizierer "private" haben.
         Student student1 = new Student();
-        student1.name="Nathan Evans";
+        student1.setName("Nathan","Evans");
         student1.id=1001;
 
         Student student2 = new Student();
-        student2.name ="Miksu Macloud";
+        student2.setName("Miksu",  "Macloud");
         student2.id = 1002;
 
-        System.out.println("Name: " + student1.name + " Id: " + student1.id);
+        System.out.println("Name: " + student1.getName() + " Id: " + student1.id);
         System.out.println(student2.info());
     }
 
