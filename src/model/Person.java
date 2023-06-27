@@ -10,10 +10,6 @@ public class Person {
 
     public Person() {}
 
-    public Person(String firstname) {
-        this.firstName = firstname;
-    }
-
     public Person(String firstname, String lastname) {
         this.firstName = firstname;
         this.lastName = lastname;
@@ -73,20 +69,16 @@ public class Person {
     public void newInputDialogue() {
 
         System.out.println("Firstname: ");
-        String firstname = sc.nextLine();
-        setFirstName(firstname);
+        firstName = sc.nextLine();
 
         System.out.println("Lastname: ");
-        String lastname = sc.nextLine();
-        setLastName(lastname);
+        lastName = sc.nextLine();
 
         System.out.println("Birth: ");
-        int birth = sc.nextInt();
-        setBirth(birth);
+        birth = sc.nextInt();
 
         System.out.println("City: ");
-        String city = sc.nextLine();
-        setCity(city);
+        city = sc.nextLine();
 
         sc.nextLine();
     }
@@ -110,9 +102,39 @@ public class Person {
         sc.nextLine();
     }
 
-    public String info() {
-        String output = "Firstname: " + this.firstName + " Lastname: " + this.lastName + " Birth: " + this.birth + " City: " + this.city;
-        return output;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Person other = (Person) obj;
+        if (firstName == null) {
+            if (other.firstName != null)
+                return false;
+        } else if (!firstName.equals(other.firstName))
+            return false;
+        if (lastName == null) {
+            if (other.lastName != null)
+                return false;
+        } else if (!lastName.equals(other.lastName))
+            return false;
+        if (city == null) {
+            if (other.city != null)
+                return false;
+        } else if (!city.equals(other.city))
+            return false;
+        if (birth != other.birth)
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Person {\n\tfirstName: " + firstName + ",\n\t lastName: " + lastName + ",\n\t city: " + city + ",\n\t birth: " + birth
+                + "\n}";
     }
 
     public static void main(String[] args) throws Exception {

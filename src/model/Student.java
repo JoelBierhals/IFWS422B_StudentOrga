@@ -60,6 +60,11 @@ public class Student extends Person {
         anzahl++;
     }
 
+    public Student(String firstName, String lastName, int birth, int id, String subject) {
+        this(firstName, lastName, birth, id);
+        this.subject = subject;
+    }
+
      public static int getAnzahl() {
         return anzahl;
     }
@@ -77,11 +82,6 @@ public class Student extends Person {
     }
 
     @Override
-    public String info() {
-        return super.info() + " Id: " + id;
-    }
-
-    @Override
     public void newInputDialogue() {
        super.newInputDialogue();
 
@@ -91,24 +91,19 @@ public class Student extends Person {
     }
 
     public static void newInputDialogue(Student student) {
-        Student.newInputDialogue(student);
+        Person.newInputDialogue(student);
 
         System.out.println("Subject: ");
         student.subject = sc.nextLine();
     }
 
-    public static void main(String[] args) throws Exception {
-        Student student1 = new Student();
-        student1.setName("Nathan","Evans");
-        student1.id=1001;
-
-        Student student2 = new Student();
-        student2.setName("Miksu",  "Macloud");
-        student2.id = 1002;
-
-        System.out.println("Name: " + student1.getName() + " Id: " + student1.id);
-        System.out.println(student2.info());
+    @Override
+    public String toString() {
+        return super.toString() +  " Student [id=" + id + ", subject=" + subject + "]";
     }
 
-   
+    public static void main(String[] args) throws Exception {
+        
+    }
+
 }

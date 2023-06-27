@@ -5,18 +5,15 @@ import model.Person;
 public class PersonCtr {
     public static void main(String[] args) throws Exception {
         Person person1 = new Person("Pippi", "Langstrumpf", 1950);
-        System.out.println(person1.info());
-        person1.newInputDialogue();
-        System.out.println(person1.info());
+        Person person2 = new Person("Pippi", "Langstrumpf", 1950);
+        Person person3 = person1;
 
-        Person person2 = new Person("Prysselius", "Liese", 1935);
-        System.out.println(person2.info());
-        person2.newInputDialogue();
-        System.out.println(person2.info());
-        
-        Person.newInputDialogue(person2);
-        System.out.println(person2.info());
+        System.out.println(person1 == person2); // false
+        System.out.println(person1 == person3); // true
+        System.out.println(person1.equals(person2)); // false <-
+        System.out.println(person1.equals(person3));
 
-        
+        System.out.println(person1);
+        System.out.println(person1.toString());
     }
 }
