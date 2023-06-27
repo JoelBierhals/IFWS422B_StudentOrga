@@ -4,7 +4,7 @@ public class PerformanceTest {
 
 	public static void main(String[] args) {
 
-		int testNr = 1;
+		int testNr = 2;
 		
 		switch(testNr){
 		case 1: System.out.println("Test String:");
