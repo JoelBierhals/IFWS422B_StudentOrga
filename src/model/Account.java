@@ -9,7 +9,7 @@ public class Account {
     private double saldo;
     protected Scanner sc = new Scanner(System.in);
 
-    private static final int BLZ = 30050110;
+    public static final int BLZ = 30050110;
     public static final String country = "DE";
 
     public long getAccountNo() {
@@ -75,8 +75,6 @@ public class Account {
                 return false;
         } else if (!owner.equals(other.owner))
             return false;
-        if (Double.doubleToLongBits(saldo) != Double.doubleToLongBits(other.saldo))
-            return false;
         return true;
     }
 
@@ -106,13 +104,14 @@ public class Account {
         bookNeg(amount);
     }
 
-    public static String generateIBan(long kontoNummer) {
-        int pruefZiffer = 13 - Math.ceilMod(kontoNummer, 13);
-        String pruefZifferString = Integer.toString(pruefZiffer);
-        if (pruefZiffer < 10)
-            pruefZifferString = "0" + pruefZifferString;
+    private static int calcCheckDigit(long accountNo) {
+        int checkDigit = (int) (accountNo % 13);
+        return 13 - checkDigit;
+    }
 
-        return country + pruefZifferString + BLZ + kontoNummer;
+    public static String generateIBan(long kontoNummer) {
+        int pruefZiffer = calcCheckDigit(kontoNummer);
+        return String.format("%s%02d%s%d", country, pruefZiffer, BLZ, kontoNummer);
     }
 
     public static String convertCountryToDigit(String country) {
@@ -121,7 +120,6 @@ public class Account {
         System.out.println("D: " + (alphabet.indexOf(array[0]) + 10));
         return Integer.toString(alphabet.indexOf(array[0]) + 10) + (alphabet.indexOf(array[1]) + 10);
     }
-
     // public static boolean checkIban(String Iban) {
     // String str = Iban.substring(3, 12) + Iban.substring(12, 20);
     // str += convertCountryToDigit(Iban.substring(0, 2));

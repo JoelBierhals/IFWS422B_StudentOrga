@@ -3,8 +3,8 @@ package model;
 public class SavingsAccount extends Account {
     private double interest;
     private double transactionLimit;
-    private static long nextAccountNo = 2000000000;
-    private static final long MAX_NO = 3000000000L;
+    private static long nextAccountNo = 2_000_000_000L;
+    private static final long MAX_NO = 3_000_000_000L;
 
     public double getInterest() {
         return interest;
@@ -47,6 +47,12 @@ public class SavingsAccount extends Account {
         super.setAccountNo(kontoNummer);
     }
 
+    public SavingsAccount(String owner, double interest, double transactionLimit) {
+        this(owner);
+        setInterest(interest);
+        setTransactionLimit(transactionLimit);
+    }
+
     @Override
     public String toString() {
         return super.toString() + " SavingsAccount {\n\tinterest: " + interest + ", \n\ttransactionLimit: "
@@ -55,7 +61,7 @@ public class SavingsAccount extends Account {
 
     @Override
     public void bookNeg(double amount) {
-        if (super.getSaldo() - amount >= 0)
+        if (super.getSaldo() - amount >= 0 && super.getSaldo() - amount > 0)
             super.bookNeg(amount);
         else
             System.out.println("Transaktion überschreitet verfügbares Geld");
