@@ -2,7 +2,7 @@ package model;
 
 import java.util.Scanner;
 
-public class Person {
+public abstract class Person {
     private String firstName, lastName;
     private String city;
     private int birth;
@@ -24,6 +24,8 @@ public class Person {
         this(firstName, lastName, birth);
         this.city = city;
     }
+
+    protected abstract void newInput();
 
     public String getFirstName() {
         return firstName;
@@ -80,7 +82,11 @@ public class Person {
         System.out.println("City: ");
         city = sc.nextLine();
 
+        newInput();
+        
         sc.nextLine();
+
+        
     }
 
     public static void newInputDialogue(Person person) {

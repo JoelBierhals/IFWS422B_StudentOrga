@@ -27,8 +27,6 @@ public class CheckingAccount extends Account {
     }
 
     public CheckingAccount() {
-        long nextAccountNo = getNextAccountNo();
-        super.setAccountNo(nextAccountNo);
         if (nextAccountNo != 1)
             super.setiBan(Account.generateIBan(nextAccountNo));
     }
@@ -61,5 +59,11 @@ public class CheckingAccount extends Account {
         System.out.println("Wie viel möchtest du abheben?");
         double amount = sc.nextDouble();
         bookNeg(amount);
+    }
+
+    @Override
+    protected void makeNewAccountNo() {
+        long nextAccountNo = getNextAccountNo();
+        super.setAccountNo(nextAccountNo);
     }
 }

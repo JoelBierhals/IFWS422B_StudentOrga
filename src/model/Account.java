@@ -1,8 +1,9 @@
 package model;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
-public class Account {
+public abstract class Account {
     private long accountNo;
     private String iBan;
     private String owner;
@@ -45,7 +46,7 @@ public class Account {
     }
 
     public Account() {
-
+        makeNewAccountNo();
     }
 
     public Account(String owner) {
@@ -56,6 +57,8 @@ public class Account {
         this.owner = owner;
         this.saldo = saldo;
     }
+
+    protected abstract void makeNewAccountNo();
 
     @Override
     public boolean equals(Object obj) {
@@ -120,17 +123,19 @@ public class Account {
         System.out.println("D: " + (alphabet.indexOf(array[0]) + 10));
         return Integer.toString(alphabet.indexOf(array[0]) + 10) + (alphabet.indexOf(array[1]) + 10);
     }
-    // public static boolean checkIban(String Iban) {
-    // String str = Iban.substring(3, 12) + Iban.substring(12, 20);
-    // str += convertCountryToDigit(Iban.substring(0, 2));
-    // System.out.println(Long.parseLong(str));
 
-    // System.out.println(str + "long:" + Long.parseLong(str));
-    // long prüfsumme = Math.ceilMod(Long.parseLong(str + "00"), 97L);
-    // System.out.println(str + "00");
+    public static boolean checkIban(String Iban) {
+        BigInteger bigInt = new BigInteger(
+                Iban.substring(4, 12) + Iban.substring(12, 22) + convertCountryToDigit(Iban.substring(0, 2)));
+        BigInteger toProof = new BigInteger(bigInt + "00");
+        BigInteger modFactor = new BigInteger("97");
+        BigInteger forSubtraction = new BigInteger("98");
+        BigInteger prüfsumme = toProof.mod(modFactor);
+        BigInteger newBigInt = new BigInteger(bigInt.toString() + forSubtraction.subtract(prüfsumme));
 
-    // return Math.ceilMod(Integer.parseInt(str + prüfsumme), 97) == 1;
-    // }
+        BigInteger one = new BigInteger("1");
+        return newBigInt.mod(modFactor).compareTo(one) == 0;
+    }
 
     public static void main(String[] args) {
 

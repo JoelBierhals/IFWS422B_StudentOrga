@@ -1,5 +1,6 @@
 package controller;
 
+import model.Account;
 import model.CheckingAccount;
 import model.SavingsAccount;
 
@@ -25,6 +26,7 @@ public class AccountCtr {
 
         SavingsAccount sb3 = new SavingsAccount("Ice Cream");
         System.out.println(sb3);
+        System.out.println(Account.checkIban(sb3.getiBan()));
 
         System.out.println("Vergleich sb3 und sb2: " + sb3.equals(sb2));
 

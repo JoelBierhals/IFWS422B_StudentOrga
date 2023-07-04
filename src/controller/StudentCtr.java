@@ -28,7 +28,7 @@ public class StudentCtr {
         System.out.println(student4);
 
         Person student5 = new Student("Luciano", "Schmidt", 1990);
-        Person person5 = new Person("Luciano", "Schmidt", 1990);
+        Person person5 = new Student("Luciano", "Schmidt", 1990);
         System.out.println(((Student)student5).getId());
 
         System.out.println(student5.equals(person5));

@@ -27,12 +27,10 @@ public class SavingsAccount extends Account {
         if (nextAccountNo <= MAX_NO)
             return nextAccountNo;
         System.out.println("Die Kontonummer liegt nicht im definierten Bereich");
-        return 1;
+        return 2;
     }
 
     public SavingsAccount() {
-        long nextAccountNo = getNextAccountNo();
-        super.setAccountNo(nextAccountNo);
         if (nextAccountNo != 2)
             super.setiBan(Account.generateIBan(nextAccountNo));
     }
@@ -76,5 +74,11 @@ public class SavingsAccount extends Account {
 
     public static void main(String[] args) {
 
+    }
+
+    @Override
+    protected void makeNewAccountNo() {
+        long nextAccountNo = getNextAccountNo();
+        super.setAccountNo(nextAccountNo);
     }
 }

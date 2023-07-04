@@ -31,7 +31,7 @@ public class Student extends Person {
 
     // Standardkonstruktor
     public Student() {
-        if(nextId > LAST_ID) {
+        if (nextId > LAST_ID) {
             id = 0;
             System.out.println("Alle verfügbaren Ids wurden verwendet.");
         } else {
@@ -56,7 +56,7 @@ public class Student extends Person {
     public Student(String firstName, String lastName, int birth, int id) {
         this(firstName, lastName, birth);
         this.id = id;
-        nextId = id+1;
+        nextId = id + 1;
         anzahl++;
     }
 
@@ -65,7 +65,7 @@ public class Student extends Person {
         this.subject = subject;
     }
 
-     public static int getAnzahl() {
+    public static int getAnzahl() {
         return anzahl;
     }
 
@@ -82,9 +82,8 @@ public class Student extends Person {
     }
 
     @Override
-    public void newInputDialogue() {
-       super.newInputDialogue();
-
+    public void newInput() {
+        System.out.println("New Student");
         System.out.println("Subject: ");
         subject = sc.nextLine();
         setSubject(subject);
@@ -99,11 +98,11 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return super.toString() +  " Student [id=" + id + ", subject=" + subject + "]";
+        return super.toString() + " Student {\n\tid: " + id + ", \n\tsubject: " + subject + "\n}";
     }
 
     public static void main(String[] args) throws Exception {
-        
+
     }
 
 }
