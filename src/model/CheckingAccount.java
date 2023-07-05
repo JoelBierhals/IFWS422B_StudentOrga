@@ -18,12 +18,8 @@ public class CheckingAccount extends Account {
         this.dispo = dispo;
     }
 
-    public long getNextAccountNo() {
-        nextAccountNo++;
-        if (nextAccountNo <= MAX_NO)
-            return nextAccountNo;
-        System.out.println("Die Kontonummer liegt nicht im definierten Bereich");
-        return 1;
+    protected long getNextAccountNo() {
+        return nextAccountNo;
     }
 
     public CheckingAccount() {
@@ -37,8 +33,8 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " CheckingAccount {\n\tdispo: " + dispo + "}";
+    public String additionalToString() {
+        return "\n\tdispo: " + dispo;
     }
 
     public CheckingAccount(int kontoNummer) {
@@ -62,8 +58,13 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    protected void makeNewAccountNo() {
-        long nextAccountNo = getNextAccountNo();
-        super.setAccountNo(nextAccountNo);
+    protected void setNextAccountNo(long accountNo) {
+        nextAccountNo = accountNo;
     }
+
+    @Override
+    protected long getMaxNo() {
+        return MAX_NO;
+    }
+
 }

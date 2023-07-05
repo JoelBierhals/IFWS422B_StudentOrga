@@ -22,12 +22,16 @@ public class SavingsAccount extends Account {
         this.transactionLimit = transactionLimit;
     }
 
-    public long getNextAccountNo() {
-        nextAccountNo++;
-        if (nextAccountNo <= MAX_NO)
-            return nextAccountNo;
-        System.out.println("Die Kontonummer liegt nicht im definierten Bereich");
-        return 2;
+    protected long getNextAccountNo() {
+        return nextAccountNo;
+    }
+
+    protected void setNextAccountNo(long accountNo) {
+        nextAccountNo = accountNo;
+    }
+
+    protected long getMaxNo() {
+        return MAX_NO;
     }
 
     public SavingsAccount() {
@@ -52,9 +56,8 @@ public class SavingsAccount extends Account {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " SavingsAccount {\n\tinterest: " + interest + ", \n\ttransactionLimit: "
-                + transactionLimit + "\n}";
+    protected String additionalToString() {
+        return "\n\tinterest: " + interest + ", \n\ttransactionLimit: "+ transactionLimit;
     }
 
     @Override
@@ -76,9 +79,4 @@ public class SavingsAccount extends Account {
 
     }
 
-    @Override
-    protected void makeNewAccountNo() {
-        long nextAccountNo = getNextAccountNo();
-        super.setAccountNo(nextAccountNo);
-    }
 }

@@ -58,7 +58,25 @@ public abstract class Account {
         this.saldo = saldo;
     }
 
-    protected abstract void makeNewAccountNo();
+    protected abstract String additionalToString();
+
+    protected abstract long getNextAccountNo();
+
+    protected abstract void setNextAccountNo(long accountNo);
+
+    protected abstract long getMaxNo();
+
+    protected void makeNewAccountNo() {
+        long nextAccountNo = getNextAccountNo();
+        long MAX_NO = getMaxNo();
+        setNextAccountNo(nextAccountNo + 1);
+        if (nextAccountNo+1 <= MAX_NO)
+            this.accountNo = nextAccountNo+1;
+        else {
+            System.out.println("Die Kontonummer liegt nicht im definierten Bereich");
+            this.accountNo = MAX_NO / 1000000000;
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -84,7 +102,7 @@ public abstract class Account {
     @Override
     public String toString() {
         return "Account {\n\taccountNo: " + accountNo + ", \n\tiBan: " + iBan + ", \n\towner: " + owner
-                + ", \n\tsaldo: " + saldo + "\n\t}";
+                + ", \n\tsaldo: " + saldo + additionalToString() + "\n\t}\nCorrect Iban? " + checkIban(iBan);
     }
 
     public void bookPos(double amount) {
