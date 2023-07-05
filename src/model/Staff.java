@@ -1,7 +1,8 @@
 package model;
 
-public class Staff extends Person {
+public class Staff extends Person implements Employee {
     private String function;
+    private int persNo;
 
     public Staff(String firstName, String lastName) {
         super(firstName, lastName);
@@ -24,11 +25,6 @@ public class Staff extends Person {
         System.out.println("New Staff");
         System.out.println("Funktion: ");
         function = sc.nextLine();
-    }
-
-    private static void newInputDialog(Staff staff) {
-        Person.newInputDialogue(staff);
-        staff.setFunction(sc.nextLine());
     }
 
     @Override
@@ -55,6 +51,16 @@ public class Staff extends Person {
 
     public static void main(String[] args) {
 
+    }
+
+    @Override
+    public void setPersNo(int persNo) {
+       this.persNo = persNo;
+    }
+
+    @Override
+    public int getPersNo() {
+        return persNo;
     }
 
 }
