@@ -22,15 +22,18 @@ public class SavingsAccount extends Account {
         this.transactionLimit = transactionLimit;
     }
 
-    protected long getNextAccountNo() {
+    @Override
+    public long fetchNextNo() {
         return nextAccountNo;
     }
 
-    protected void setNextAccountNo(long accountNo) {
-        nextAccountNo = accountNo;
+    @Override
+    public void incNextNo() {
+        nextAccountNo++;
     }
 
-    protected long getMaxNo() {
+    @Override
+    public long fetchLAST_NO() {
         return MAX_NO;
     }
 

@@ -3,7 +3,7 @@ package model;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-public abstract class Account {
+public abstract class Account implements Numberable {
     private long accountNo;
     private String iBan;
     private String owner;
@@ -60,16 +60,10 @@ public abstract class Account {
 
     protected abstract String additionalToString();
 
-    protected abstract long getNextAccountNo();
-
-    protected abstract void setNextAccountNo(long accountNo);
-
-    protected abstract long getMaxNo();
-
     protected void makeNewAccountNo() {
-        long nextAccountNo = getNextAccountNo();
-        long MAX_NO = getMaxNo();
-        setNextAccountNo(nextAccountNo + 1);
+        long nextAccountNo = fetchNextNo();
+        long MAX_NO = fetchLAST_NO();
+        incNextNo();
         if (nextAccountNo+1 <= MAX_NO)
             this.accountNo = nextAccountNo+1;
         else {

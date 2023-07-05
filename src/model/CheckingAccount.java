@@ -18,7 +18,7 @@ public class CheckingAccount extends Account {
         this.dispo = dispo;
     }
 
-    protected long getNextAccountNo() {
+    public long fetchNextNo() {
         return nextAccountNo;
     }
 
@@ -58,12 +58,12 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    protected void setNextAccountNo(long accountNo) {
-        nextAccountNo = accountNo;
+    public void incNextNo() {
+        nextAccountNo++;
     }
 
     @Override
-    protected long getMaxNo() {
+    public long fetchLAST_NO() {
         return MAX_NO;
     }
 
