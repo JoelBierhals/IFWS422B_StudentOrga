@@ -65,6 +65,12 @@ public class Student extends Person {
         this.subject = subject;
     }
 
+    public Student(String firstName, String lastName, int birth, int id, String subject, Location residence) {
+        this(firstName, lastName, birth, id, subject);
+        super.setResidence(residence);
+    }
+
+
     public static int getAnzahl() {
         return anzahl;
     }

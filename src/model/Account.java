@@ -6,7 +6,7 @@ import java.util.Scanner;
 public abstract class Account implements Numberable {
     private long accountNo;
     private String iBan;
-    private String owner;
+    private Person owner;
     private double saldo;
     protected Scanner sc = new Scanner(System.in);
 
@@ -29,11 +29,11 @@ public abstract class Account implements Numberable {
         this.iBan = iBan;
     }
 
-    public String getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
 
@@ -49,11 +49,11 @@ public abstract class Account implements Numberable {
         makeNewAccountNo();
     }
 
-    public Account(String owner) {
+    public Account(Person owner) {
         this.owner = owner;
     }
 
-    public Account(String owner, double saldo) {
+    public Account(Person owner, double saldo) {
         this.owner = owner;
         this.saldo = saldo;
     }
@@ -95,7 +95,7 @@ public abstract class Account implements Numberable {
 
     @Override
     public String toString() {
-        return "Account {\n\taccountNo: " + accountNo + ", \n\tiBan: " + iBan + ", \n\towner: " + owner
+        return "Account {\n\taccountNo: " + accountNo + ", \n\tiBan: " + iBan + ", \n\towner: " + owner.getFirstName() + ", " + owner.getLastName()
                 + ", \n\tsaldo: " + saldo + additionalToString() + "\n\t}\nCorrect Iban? " + checkIban(iBan);
     }
 

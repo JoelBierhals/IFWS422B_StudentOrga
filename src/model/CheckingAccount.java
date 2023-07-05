@@ -27,7 +27,7 @@ public class CheckingAccount extends Account {
             super.setiBan(Account.generateIBan(nextAccountNo));
     }
 
-    public CheckingAccount(String owner) {
+    public CheckingAccount(Person owner) {
         this();
         super.setOwner(owner);
     }

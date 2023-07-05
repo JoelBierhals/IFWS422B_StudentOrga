@@ -1,5 +1,6 @@
 package controller;
 
+import model.Location;
 import model.Person;
 import model.Student;
 
@@ -12,8 +13,10 @@ import model.Student;
 public class StudentCtr {
 
     public static void main(String[] args) throws Exception {
+        Location location1 = new Location("Conr", 63, 13509, "Berlin");
+
         Student student1 = new Student("Nathan", "Evans");
-        Student student2 = new Student("Miksu", "Macloud", 9999);
+        Student student2 = new Student("Miksu", "Macloud", 9999, 2, "WI", location1);
 
         System.out.println(student1.getName() + "\t" + student1.getId());
         System.out.println(student2);
@@ -29,7 +32,7 @@ public class StudentCtr {
 
         Person student5 = new Student("Luciano", "Schmidt", 1990);
         Person person5 = new Student("Luciano", "Schmidt", 1990);
-        System.out.println(((Student)student5).getId());
+        System.out.println(((Student) student5).getId());
 
         System.out.println(student5.equals(person5));
         System.out.println(person5.equals(student5));

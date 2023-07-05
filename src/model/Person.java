@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public abstract class Person {
     private String firstName, lastName;
-    private String city;
     private int birth;
+    private Location residence;
+    private Account account;
     protected static Scanner sc = new Scanner(System.in);
 
     public Person() {}
@@ -20,9 +21,14 @@ public abstract class Person {
         this.birth = birth;
     }
 
-    public Person(String firstName, String lastName, int birth, String city) {
+    public Person(String firstName, String lastName, int birth, Location residence) {
         this(firstName, lastName, birth);
-        this.city = city;
+        this.residence = residence;
+    }
+
+    public Person(String firstName, String lastName, int birth, Location residence, Account account) {
+        this(firstName, lastName, birth, residence);
+        this.account = account;
     }
 
     protected abstract void newInput();
@@ -61,11 +67,23 @@ public abstract class Person {
     }
 
     public String getCity() {
-        return city;
+        return residence.getCity();
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public Location getResidence() {
+        return residence;
+    }
+
+    public void setResidence(Location residence) {
+        this.residence = residence;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void newInputDialogue() {
@@ -79,8 +97,9 @@ public abstract class Person {
         System.out.println("Birth: ");
         birth = sc.nextInt();
 
+        if(residence == null) residence = new Location();
         System.out.println("City: ");
-        city = sc.nextLine();
+        residence.setCity(sc.nextLine());
 
         newInput();
         
@@ -102,8 +121,10 @@ public abstract class Person {
         int birth = sc.nextInt();
         person.setBirth(birth);
 
+        if(person.residence == null) person.residence = new Location();
+
         System.out.println("City: ");
-        person.setCity(sc.nextLine());
+        person.getResidence().setCity(sc.nextLine());
 
         sc.nextLine();
     }
@@ -127,10 +148,10 @@ public abstract class Person {
                 return false;
         } else if (!lastName.equals(other.lastName))
             return false;
-        if (city == null) {
-            if (other.city != null)
+        if (residence == null) {
+            if (other.residence != null)
                 return false;
-        } else if (!city.equals(other.city))
+        } else if (!residence.equals(other.residence))
             return false;
         if (birth != other.birth)
             return false;
@@ -139,7 +160,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person {\n\tfirstName: " + firstName + ",\n\t lastName: " + lastName + ",\n\t city: " + city + ",\n\t birth: " + birth
+        return "Person {\n\tfirstName: " + firstName + ",\n\t lastName: " + lastName + ",\n\t residence: " + residence + ",\n\t birth: " + birth + ",\n\taccount: " + account
                 + "\n}";
     }
 

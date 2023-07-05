@@ -1,19 +1,24 @@
 package controller;
 
 import model.Location;
+import model.Person;
+import model.SavingsAccount;
+import model.Student;
 
 public class LocationCtr {
     public static void main(String[] args) {
-        Location l1 = new Location("Conradstr.", 63, 13509, "Berlin");
-        System.out.println(l1);
+        Location loc1 = new Location("Fürstenallee", 5, 33102, "Paderborn");
+        Location loc2 = new Location("Meisenstraße", 92, 33607, "Bielefeld");
+        //Location.newInputDialogue(loc1);System.out.println(loc1.toString());
+        //loc2.newInputDialogue();System.out.println(loc2.toString());
+        Person student1 = new Student("Justin", "Bieber", 1994, 1, "WI", loc1);
+        Person student2 = new Student("Phil", "Collins", 1951, 2, "Math", new Location("Rathenaustraße", 3, 33102, "Paderborn"));
 
-        Location l2 = new Location();
-        l2.newInputDialogue();
+        SavingsAccount account1 = new SavingsAccount(student1, 9, 1000 );
+        student1.setAccount(account1);
 
-        Location l3 = new Location("1", 2, 3, "4");
-
-        System.out.println(l2.equals(l3));
-
-        System.out.println(l2.toString());
+        System.out.println(student1);
+        System.out.println(student2);
+        System.out.println(student1.getResidence().getStreet());
     }
 }

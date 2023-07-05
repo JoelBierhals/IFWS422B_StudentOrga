@@ -42,7 +42,7 @@ public class SavingsAccount extends Account {
             super.setiBan(Account.generateIBan(nextAccountNo));
     }
 
-    public SavingsAccount(String owner) {
+    public SavingsAccount(Person owner) {
         this();
         super.setOwner(owner);
     }
@@ -52,7 +52,7 @@ public class SavingsAccount extends Account {
         super.setAccountNo(kontoNummer);
     }
 
-    public SavingsAccount(String owner, double interest, double transactionLimit) {
+    public SavingsAccount(Person owner, double interest, double transactionLimit) {
         this(owner);
         setInterest(interest);
         setTransactionLimit(transactionLimit);
