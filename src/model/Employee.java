@@ -1,6 +1,6 @@
 package model;
 
 public interface Employee {
-    final int kostenstelle = 1231; // automatisch public und static
+    int kostenstelle = 1231; // automatisch final, public und static
 
 }
